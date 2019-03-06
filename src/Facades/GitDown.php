@@ -1,6 +1,6 @@
 <?php
 
-namespace GitDown;
+namespace GitDown\Facades;
 
 use Illuminate\Support\Facades\Facade as Facade;
 

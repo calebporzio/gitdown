@@ -9,7 +9,7 @@ class GitDownServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app()->singleton('gitdown', function () {
+        app()->singleton('gitdown', function () {
             return new GitDown(config('gitdown.token'));
         });
     }
