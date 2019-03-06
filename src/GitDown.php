@@ -15,6 +15,16 @@ class GitDown
         $this->context = $context;
     }
 
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
+
+    public function setContext($token)
+    {
+        $this->context = $context;
+    }
+
     public function parse($content)
     {
         $response = Zttp::withHeaders([
