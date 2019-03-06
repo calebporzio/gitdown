@@ -2,13 +2,13 @@
 
 namespace Calebporzio\GitDown\Tests;
 
-use Calebporzio\GitDown\GitDown;
+use CalebPorzio\GitDown;
 use PHPUnit\Framework\TestCase;
 
 class GitDownTest extends TestCase
 {
     /** @test */
-    public function basic_markdown_parsing()
+    public function github_properly_parses_markdown()
     {
         $parsed = GitDown::parse(<<<EOT
 **foo**

@@ -26,6 +26,10 @@ class GitDown
 
     public static function styles()
     {
-        return file_get_contents(__DIR__ . '/../dist/styles.css');
+        return file_get_contents(
+            implode(DIRECTORY_SEPARATOR, [
+                __DIR__, '..', 'dist', 'styles.css',
+            ])
+        );
     }
 }
