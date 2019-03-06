@@ -8,6 +8,8 @@ This package is a fraud. All it does is fire off your markdown to a [public GitH
 
 Knowing this, if you don't store the result, or take advantage of the provided caching features, you'll end up with slow page loads, or worse, rate-limit errors from GitHub.
 
+Markdown parsing is super annoying, and this tradeoff is well worth it to me, I hope you embrace it as well.
+
 ## Installation
 
 ```bash
