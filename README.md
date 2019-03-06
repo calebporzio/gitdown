@@ -1,3 +1,5 @@
+![Gitdown - a simple package to parse markdown in PHP](banner.png)
+
 # GitDown
 A simple package to parse Github Flavored Markdown in PHP
 
