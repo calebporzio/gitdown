@@ -47,7 +47,7 @@ First, publish the package's config file.
 
 Then, add the following entry to your `.env` file.
 
-```toml
+```
 [...]
 GITHUB_TOKEN=your-token-here
 ```
@@ -91,7 +91,7 @@ Styling markdown with CSS has always been a bit of a pain for me. Not to mention
 
 GitDown ships with all the CSS you need to make your markdown look exactly like it does on GitHub. Just add this code somewhere on your HTML page, preferably near your other stylesheets in the `<head>` section.
 
-```php
+```html
 <head>
     [...]
     @gitdown
@@ -99,7 +99,7 @@ GitDown ships with all the CSS you need to make your markdown look exactly like 
 ```
 
 **Non-Laravel**
-```php
+```html
 <head>
     [...]
     <style><?php echo GitDown\GitDown::styles(); ?></style>
@@ -125,7 +125,6 @@ Now you can include the SCSS files in your Sass bundler:
 To enable GFM parsing for GitDown, set the "context" entry in `config/gitdown.php` to a repository name.
 
 ```php
-[...]
 "context" => "your/repo",
 ```
 
