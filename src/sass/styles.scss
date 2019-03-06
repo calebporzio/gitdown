@@ -1,0 +1,6 @@
+@import "./markdown.scss";
+@import "./../../build/css/palenight.css";
+
+.markdown-body .highlight pre, .markdown-body pre {
+background-color: #2A2E3D;
+}
