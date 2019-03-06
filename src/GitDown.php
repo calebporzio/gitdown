@@ -38,28 +38,28 @@ class GitDown
             throw new \Exception('GitHub API Error: ' . $response->body());
         }
 
-        return $response;
+        return (string) $response;
     }
 
     public function parseAndCache($content, $minutes = null)
     {
         if (is_callable($minutes)) {
-            return $minutes(static::generateParseCallback($content));
+            return $minutes($this->generateParseCallback($content));
         } elseif (is_null($minutes)) {
             return cache()->rememberForever(sha1($content), function () use ($content) {
-                return static::parse($content);
+                return $this->parse($content);
             });
         }
 
         return cache()->remember(sha1($content), $minutes, function () use ($content) {
-            return static::parse($content);
+            return $this->parse($content);
         });
     }
 
     protected function generateParseCallback($content)
     {
         return function () use ($content) {
-            return static::parse($content);
+            return $this->parse($content);
         };
     }
 
