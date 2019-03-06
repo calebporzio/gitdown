@@ -28,13 +28,18 @@ GitDown::parse($markdown);
 GitDown::parseAndCache($markdown);
 ```
 
-Optionally, add the `@gitdown` snippet to your template's `<head>` section for GitHub markdown/code-syntax styling.
+Optionally, add the `@gitdown` snippet to your template's `<head>` section, and a `.markdown-body` class to a wrapper element, for GitHub markdown/code-syntax styling.
 
 ```html
 <head>
     [...]
     @gitdown
 </head>
+<body>
+    <div class="markdown-body">
+        {!! GitDown::parseAndCache($conent) !!}
+    </div>
+</body>
 ```
 
 ## Authenticating With GitHub
