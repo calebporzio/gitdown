@@ -47,4 +47,12 @@ EOT
             }
         };
     }
+
+    /** @test */
+    public function parsed_html_preserves_iframes()
+    {
+        $parsed = (new GitDown(null, null, $allowIframes = true))->parse('<iframe></iframe>');
+
+        $this->assertEquals('<p><iframe></iframe></p>', trim($parsed));
+    }
 }

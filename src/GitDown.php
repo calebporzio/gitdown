@@ -8,21 +8,34 @@ class GitDown
 {
     protected $token;
     protected $context;
+    protected $allowIframes;
 
-    public function __construct($token = null, $context = null)
+    public function __construct($token = null, $context = null, $allowIframes = false)
     {
         $this->token = $token;
         $this->context = $context;
+        $this->allowIframes = $allowIframes;
     }
 
     public function setToken($token)
     {
         $this->token = $token;
+
+        return $this;
     }
 
-    public function setContext($token)
+    public function setContext($context)
     {
         $this->context = $context;
+
+        return $this;
+    }
+
+    public function withIframes()
+    {
+        $this->allowIframes = true;
+
+        return $this;
     }
 
     public function parse($content)
@@ -31,14 +44,48 @@ class GitDown
             'User-Agent' => 'GitDown Plugin',
         ] + ($this->token ? ['Authorization' => 'token '.$this->token] : []))
         ->post('https://api.github.com/markdown', [
-            'text' => $content,
+            'text' => $this->encryptIframeTags($content),
         ] + ($this->context ? ['mode' => 'gfm', 'context' => $this->context] : []));
 
         if (! $response->isOk()) {
             throw new \Exception('GitHub API Error: ' . $response->body());
         }
 
-        return (string) $response;
+        return $this->decryptIframeTags((string) $response);
+    }
+
+    public function encryptIframeTags($input)
+    {
+        if (! $this->allowIframes) {
+            return $input;
+        }
+
+        if (! preg_match_all('/<iframe[^>]*?(?:\/>|>[^<]*?<\/iframe>)/', $input, $matches)) {
+            return $input;
+        };
+
+        foreach ($matches[0] as $match) {
+            $input = str_replace($match, '\[iframe\]'. base64_encode($match).'\[endiframe\]', $input);
+        }
+
+        return $input;
+    }
+
+    public function decryptIframeTags($input)
+    {
+        if (! $this->allowIframes) {
+            return $input;
+        }
+
+        if (! preg_match_all('/\[iframe\].*\[endiframe\]/', $input, $matches)) {
+            return $input;
+        };
+
+        foreach ($matches[0] as $match) {
+            $input = str_replace($match, base64_decode(ltrim(rtrim($match, '[endiframe]'), '[iframe]')), $input);
+        }
+
+        return $input;
     }
 
     public function parseAndCache($content, $minutes = null)

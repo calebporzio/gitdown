@@ -28,4 +28,17 @@ return [
 
     'context' => null,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Allow Iframes
+    |--------------------------------------------------------------------------
+    |
+    | By default, GitHub escapes any HTML tags it deems "unsafe" while parsing.
+    | For example, passing in a string like "<iframe></iframe>" will output
+    | "&lt;iframe&gt;&lt;/iframe&gt;". This config will work-around this.
+    |
+    */
+
+    'allowIframes' => false,
+
 ];
