@@ -1,6 +1,6 @@
-@import "./markdown.scss";
-@import "./../../build/css/palenight.css";
 
-.markdown-body .highlight pre, .markdown-body pre {
-background-color: #2A2E3D;
-}
+// The "markdown" component of Github's Primer CSS library.
+@import "primer-markdown/index.scss";
+
+// Github's "light" theme for syntax highlighting.
+@import "./../../node_modules/github-syntax-light/lib/github-light.css";
