@@ -16,6 +16,13 @@
     "require-dev": {
         "phpunit/phpunit": "^7.0"
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CalebPorzio\\GitDownServiceProvider"
+            ]
+        }
+    },
     "autoload": {
         "psr-4": {
             "CalebPorzio\\": "src"

@@ -20,8 +20,31 @@ EOT
         $this->assertEquals(<<<EOT
 <p><strong>foo</strong></p>
 <p><a href="baz">bar</a></p>
-
 EOT
-        , $parsed);
+        , trim($parsed));
+    }
+
+    /** @test */
+    public function can_provide_caching_strategy()
+    {
+        $numberOfTimesGitHubWasCalled = 0;
+
+        $firstResult = GitDown::parseAndCache('**foo**', $this->cacheStrategy($numberOfTimesGitHubWasCalled));
+        $secondResult = GitDown::parseAndCache('**foo**', $this->cacheStrategy($numberOfTimesGitHubWasCalled));
+
+        $this->assertEquals('<p><strong>foo</strong></p>', trim($firstResult));
+        $this->assertEquals('cached', $secondResult);
+    }
+
+    protected function cacheStrategy(&$callCount)
+    {
+        return function ($parse) use (&$callCount) {
+            if ($callCount < 1) {
+                $callCount++;
+                return $parse();
+            } else {
+                return 'cached';
+            }
+        };
     }
 }
