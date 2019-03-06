@@ -19,18 +19,21 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CalebPorzio\\GitDownServiceProvider"
-            ]
+                "GitDown\\GitDownServiceProvider"
+            ],
+            "aliases": {
+                "GitDown": "GitDown\\Facades\\GitDown"
+            }
         }
     },
     "autoload": {
         "psr-4": {
-            "CalebPorzio\\": "src"
+            "GitDown\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CalebPorzio\\GitDown\\Tests\\": "tests"
+            "GitDown\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -38,5 +41,8 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "require": {
+        "kitetail/zttp": "^0.4.0"
     }
 }
