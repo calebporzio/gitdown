@@ -40,7 +40,7 @@ If echoing out CSS directly on your page doesn't sit well with you, you can add 
 
 Now you can include the SCSS files in your Sass bundler:
 
-```
+```scss
 @import "primer-markdown/index.scss";
 // The relative directories may be a little different for you.
 @import "./../../node_modules/github-syntax-light/lib/github-light.css";
