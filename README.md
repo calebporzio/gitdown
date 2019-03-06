@@ -19,9 +19,33 @@ composer require calebporzio/gitdown
 ## Usage
 
 ```php
-$markdown = file_get_contents('./some-file.md');
-
-CalebPorzio\GitDown::parse($markdown);
+CalebPorzio\GitDown::parse('# Some Markdown');
 ```
 
-## Styling the markdown
+## Making it look good
+
+Styling markdown with CSS has always been a bit of a pain for me. Not to mention trying to style syntax inside code blocks. Not to worry!
+
+GitDown ships with all the CSS you need to make your markdown look exactly like it does on GitHub. Just add this code somewhere on your HTML page, preferably near your other stylesheets.
+
+```php
+<style><?php echo CalebPorzio\GitDown::styles(); ?></style>
+```
+
+Bam! That's all you need to make everything look good 🤙.
+
+If echoing out CSS directly on your page doesn't sit well with you, you can add the styles to your stylesheet yourself using NPM.
+
+`npm install primer-markdown github-syntax-light --save`
+
+Now you can include the SCSS files in your Sass bundler:
+
+```
+@import "primer-markdown/index.scss";
+// The relative directories may be a little different for you.
+@import "./../../node_modules/github-syntax-light/lib/github-light.css";
+```
+
+## Enjoy!
+
+Hope this makes your life easier. If it does, show the project some love on Twitter and tag me: [@calebporzio](https://twitter.com/calebporzio)
