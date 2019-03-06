@@ -1,6 +1,6 @@
 <?php
 
-namespace CalebPorzio;
+namespace GitDown;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
