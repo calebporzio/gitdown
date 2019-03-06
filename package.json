@@ -9,7 +9,6 @@
         "false": "^0.0.4",
         "github-syntax-dark": "^0.5.0",
         "github-syntax-light": "^0.5.0",
-        "github-syntax-theme-generator": "^0.5.0",
         "laravel-mix": "^4.0.14",
         "primer-markdown": "^4.0.0",
         "resolve-url-loader": "^2.3.1",
