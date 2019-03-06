@@ -1,7 +1,7 @@
 ![Gitdown - a simple package to parse markdown in PHP](banner.png)
 
 # GitDown
-A simple package to parse Github Flavored Markdown in PHP
+A simple package to parse Github Flavored Markdown in PHP.
 
 ## WARNING
 This package is a fraud. All it does is fire off your markdown to a public GitHub API that returns the parsed result.
