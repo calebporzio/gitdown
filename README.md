@@ -37,7 +37,7 @@ Optionally, add the `@gitdown` snippet to your template's `<head>` section, and 
 </head>
 <body>
     <div class="markdown-body">
-        {!! GitDown::parseAndCache($conent) !!}
+        {!! GitDown::parseAndCache($content) !!}
     </div>
 </body>
 ```
