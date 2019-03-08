@@ -13,7 +13,8 @@ class GitDownServiceProvider extends ServiceProvider
             return new GitDown(
                 config('gitdown.token'),
                 config('gitdown.context'),
-                config('gitdown.allowIframes')
+                config('gitdown.allowIframes'),
+                config('gitdown.syntaxTheme')
             );
         });
     }
