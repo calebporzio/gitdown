@@ -30,15 +30,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Allow Iframes
+    | Allow Dangerous Tags
     |--------------------------------------------------------------------------
     |
     | By default, GitHub escapes any HTML tags it deems "unsafe" while parsing.
     | For example, passing in a string like "<iframe></iframe>" will output
-    | "&lt;iframe&gt;&lt;/iframe&gt;". This config will work-around this.
+    | "&lt;iframe&gt;&lt;/iframe&gt;". This config allow you to specify those
+    | tags that you want to preserve.
     |
     */
 
-    'allowIframes' => false,
+    'allowedTags' => [],
 
 ];
