@@ -75,13 +75,15 @@ GitDown::parseAndCache($markdown, function ($parse) {
 });
 ```
 
-## Allowing Iframes
+## Allowing Dangerous Tags
 By default, GitHub sanitizes HTML tags it deems "unsafe" like `<iframe>`s. However, it's common to embed video or audio into your markdown with `<iframe>`s.
 
-GitDown can intelligently preserve your iframes by setting the `allowIframes` config option in `config/gitdown.php` to `true`.
+GitDown can intelligently preserve your tags by filling the `allowedTags` config array option in `config/gitdown.php` with the tags you want to prevent being parsed.
 
 ```php
-"allowIframes" => true,
+"allowedTags" => [
+    'iframe',
+],
 ```
 
 ## Non-Laravel Usage
@@ -93,7 +95,7 @@ You can set a GitHub Personal Access Token by passing it into the `GitDown`'s co
 $gitDown = new GitDown\GitDown(
     $token = 'foo',
     $context = 'your/repo',
-    $allowIframes = false
+    $allowedTags = []
 );
 
 $gitDown->parse($markdown);
