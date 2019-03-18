@@ -10,11 +10,17 @@ class GitDownServiceProvider extends ServiceProvider
     public function register()
     {
         app()->singleton('gitdown', function () {
+            $allowedTags = config('gitdown.allowedTags', []);
+
+            // Support the legacy config option: allowIframes
+            if (config('gitdown.allowIframes') && array_search('iframe', $allowedTags) === false) {
+                $allowedTags[] = 'iframe';
+            }
+
             return new GitDown(
                 config('gitdown.token'),
                 config('gitdown.context'),
-                // Support the legacy config option: allowIframes
-                config('gitdown.allowedTags', config('gitdown.allowIframes') ? ['iframe'] : [])
+                $allowedTags
             );
         });
     }
