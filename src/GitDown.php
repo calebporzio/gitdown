@@ -105,9 +105,13 @@ class GitDown
             return $minutes($this->generateParseCallback($content));
         }
 
-        return cache()->remember(sha1($content), now()->addMinutes(int $minutes), function () use ($content) {
-            return $this->parse($content);
-        });
+        return cache()->remember(
+            sha1($content),
+            $minutes,
+            function () use ($content) {
+                return $this->parse($content);
+            }
+        );
     }
 
     protected function generateParseCallback($content)
