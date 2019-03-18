@@ -49,10 +49,10 @@ EOT
     }
 
     /** @test */
-    public function parsed_html_preserves_iframes()
+    public function parsed_html_preserves_dangerous_tags()
     {
-        $parsed = (new GitDown(null, null, $allowIframes = true))->parse('<iframe></iframe>');
+        $parsed = (new GitDown(null, null, $allowedTags = ['iframe', 'script']))->parse('<iframe></iframe><script></script>');
 
-        $this->assertEquals('<p><iframe></iframe></p>', trim($parsed));
+        $this->assertEquals('<p><iframe></iframe><script></script></p>', trim($parsed));
     }
 }
