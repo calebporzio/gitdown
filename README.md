@@ -78,11 +78,11 @@ GitDown::parseAndCache($markdown, function ($parse) {
 ## Allowing Dangerous Tags
 By default, GitHub sanitizes HTML tags it deems "unsafe" like `<iframe>`s. However, it's common to embed video or audio into your markdown with `<iframe>`s.
 
-GitDown can intelligently preserve your tags by filling the `allowedTags` config array option in `config/gitdown.php` with the tags you want to prevent to be parsed.
+GitDown can intelligently preserve your tags by filling the `allowedTags` config array option in `config/gitdown.php` with the tags you want to prevent being parsed.
 
 ```php
 "allowedTags" => [
-    'iframe'
+    'iframe',
 ],
 ```
 

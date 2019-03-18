@@ -13,7 +13,8 @@ class GitDownServiceProvider extends ServiceProvider
             return new GitDown(
                 config('gitdown.token'),
                 config('gitdown.context'),
-                config('gitdown.allowedTags')
+                // Support the legacy config option: allowIframes
+                config('gitdown.allowedTags', config('gitdown.allowIframes') ? ['iframe'] : [])
             );
         });
     }
