@@ -9,12 +9,14 @@ class GitDown
     protected $token;
     protected $context;
     protected $allowedTags;
+    protected $theme;
 
-    public function __construct($token = null, $context = null, $allowedTags = [])
+    public function __construct($token = null, $context = null, $allowedTags = [], $theme = 'light')
     {
         $this->token = $token;
         $this->context = $context;
         $this->allowedTags = $allowedTags;
+        $this->theme = $theme;
     }
 
     public function setToken($token)
@@ -125,7 +127,7 @@ class GitDown
     {
         return file_get_contents(
             implode(DIRECTORY_SEPARATOR, [
-                __DIR__, '..', 'dist', 'styles.css',
+                __DIR__, '..', 'dist', 'styles-'.$this->theme.'.css',
             ])
         );
     }
