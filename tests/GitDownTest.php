@@ -55,4 +55,12 @@ EOT
 
         $this->assertEquals('<p><iframe></iframe><script></script></p>', trim($parsed));
     }
+
+    /** @test */
+    public function can_get_the_styles()
+    {
+        $gitDown = new GitDown(null, null, $allowedTags = ['iframe', 'script']);
+
+        $this->assertSame(file_get_contents(__DIR__ . '/../dist/styles-light.css'), $gitDown->styles());
+    }
 }
