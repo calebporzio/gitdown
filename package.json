@@ -5,14 +5,14 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "cross-env": "^5.2.0",
+        "cross-env": "^5.2.1",
         "false": "^0.0.4",
         "github-syntax-dark": "^0.5.0",
         "github-syntax-light": "^0.5.0",
-        "laravel-mix": "^4.0.14",
+        "laravel-mix": "^5.0.9",
         "primer-markdown": "^4.0.0",
-        "resolve-url-loader": "^2.3.1",
-        "sass": "^1.17.2",
-        "sass-loader": "^7.1.0"
+        "resolve-url-loader": "^3.1.2",
+        "sass": "^1.29.0",
+        "sass-loader": "^7.3.1"
     }
 }
