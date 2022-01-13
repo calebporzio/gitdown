@@ -17,7 +17,7 @@ class GitDownTest extends TestCase
 EOT
         );
 
-        $this->assertEquals(<<<EOT
+        $this->assertSame(<<<EOT
 <p><strong>foo</strong></p>
 <p><a href="baz">bar</a></p>
 EOT
@@ -32,8 +32,8 @@ EOT
         $firstResult = (new GitDown)->parseAndCache('**foo**', $this->cacheStrategy($numberOfTimesGitHubWasCalled));
         $secondResult = (new GitDown)->parseAndCache('**foo**', $this->cacheStrategy($numberOfTimesGitHubWasCalled));
 
-        $this->assertEquals('<p><strong>foo</strong></p>', trim($firstResult));
-        $this->assertEquals('cached', $secondResult);
+        $this->assertSame('<p><strong>foo</strong></p>', trim($firstResult));
+        $this->assertSame('cached', $secondResult);
     }
 
     protected function cacheStrategy(&$callCount)
@@ -53,7 +53,7 @@ EOT
     {
         $parsed = (new GitDown(null, null, $allowedTags = ['iframe', 'script']))->parse('<iframe></iframe><script></script>');
 
-        $this->assertEquals('<p><iframe></iframe><script></script></p>', trim($parsed));
+        $this->assertSame('<p><iframe></iframe><script></script></p>', trim($parsed));
     }
 
     /** @test */
